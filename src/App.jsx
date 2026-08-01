@@ -99,7 +99,7 @@ function App() {
             <TodoList todos={todos} delTodo={deleteTodo} edtTodo={editTodo} />
           </>
         } />
-        <Route exact exact path="/about" element={
+        <Route exact path="/about" element={
           <About />
         } />
       </Routes>
