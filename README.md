@@ -1,7 +1,8 @@
 # 📝 Todo List Application
 
-A modern, feature-rich Todo List application built with React.js. This application provides a seamless task management experience with a sleek dark theme design and persistent storage.
+A modern, feature-rich Todo List application built with React.js and Material-UI. This application provides a seamless task management experience with a sleek dark theme design and persistent storage.
 
+![Todo App Demo](https://via.placeholder.com/800x400/1a1a2e/6c5ce7?text=Todo+List+App)
 
 ## ✨ Features
 
@@ -10,8 +11,8 @@ A modern, feature-rich Todo List application built with React.js. This applicati
 - 🗑️ **Delete Todos** - Remove tasks you no longer need
 - 💾 **Persistent Storage** - All todos are saved in localStorage
 - 🌙 **Dark Theme** - Modern dark UI with gradient accents
+- 🎨 **Material-UI Design** - Clean, minimal, and professional interface
 - 📱 **Responsive Design** - Works perfectly on all devices
-- 🎨 **Modern UI** - Glassmorphism effects and smooth animations
 - 🔍 **About Page** - Learn more about the application
 - ⚡ **Fast Performance** - Optimized React components
 - 🎯 **User-Friendly** - Intuitive interface for all users
@@ -22,9 +23,9 @@ A modern, feature-rich Todo List application built with React.js. This applicati
 |------------|---------|
 | **React.js** | Frontend library for building UI |
 | **React Router DOM** | Navigation and routing |
-| **Bootstrap** | Responsive layout and styling |
-| **Bootstrap Icons** | Beautiful icon library |
-| **CSS3** | Custom styling with animations |
+| **Material-UI (MUI)** | Component library and styling |
+| **MUI Icons** | Beautiful icon library |
+| **Emotion** | CSS-in-JS styling |
 | **LocalStorage** | Data persistence |
 
 ## 📦 Installation
@@ -37,40 +38,40 @@ A modern, feature-rich Todo List application built with React.js. This applicati
 
 1. **Clone the repository**
 
-`bash
+```bash
 git clone https://github.com/yourusername/todo-list-app.git
 cd todo-list-app
-`
+```
 
 2. **Install dependencies**
 
-`bash
+```bash
 npm install
-`
+```
 
-3. **Add Bootstrap Icons** (in `public/index.html`)
+3. **Install Material-UI dependencies**
 
-`html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-`
+```bash
+npm install @mui/material @emotion/react @emotion/styled @mui/icons-material
+```
 
 4. **Start the development server**
 
-`bash
+```bash
 npm start
-`
+```
 
 5. **Open your browser**
 
-`
+```
 http://localhost:3000
-`
+```
 
 ## 🚀 Build for Production
 
-`bash
+```bash
 npm run build
-`
+```
 
 The build folder is ready to be deployed.
 
@@ -83,14 +84,14 @@ todo-list-app/
 │   └── favicon.ico
 ├── src/
 │   ├── Components/
-│   │   ├── Header.js         # Navigation bar
-│   │   ├── Footer.js         # Footer section
-│   │   ├── TodoList.js       # List of todos
-│   │   ├── TodoItem.js       # Individual todo item
-│   │   ├── AddTodo.js        # Add todo form
-│   │   ├── EditTodo.js       # Edit todo form
-│   │   └── About.js          # About page
-│   ├── App.js                # Main application
+│   │   ├── Header.js         # Navigation bar with Material-UI
+│   │   ├── Footer.js         # Footer section with Material-UI
+│   │   ├── TodoList.js       # List of todos with Material-UI
+│   │   ├── TodoItem.js       # Individual todo item with Material-UI
+│   │   ├── AddTodo.js        # Add todo form with Material-UI
+│   │   ├── EditTodo.js       # Edit todo form with Material-UI
+│   │   └── About.js          # About page with Material-UI
+│   ├── App.js                # Main application with ThemeProvider
 │   ├── App.css               # Global styles
 │   └── index.js              # Entry point
 ├── package.json
@@ -102,28 +103,28 @@ todo-list-app/
 
 ### 1. Adding a Todo
 
-`
+```
 1. Enter a title in the "Title" field
 2. Enter a description in the "Description" field  
 3. Click the "Add Todo" button
 4. Your new todo will appear in the list
-`
+```
 
 ### 2. Editing a Todo
 
-`
+```
 1. Click the "Edit" button on any todo
 2. Modify the title and/or description
 3. Click the "Update Todo" button
 4. The todo will be updated instantly
-`
+```
 
 ### 3. Deleting a Todo
 
-`
+```
 1. Click the "Delete" button on any todo
 2. The todo will be removed immediately
-`
+```
 
 ## 🎨 Color Palette
 
@@ -135,62 +136,78 @@ todo-list-app/
 | Danger Accent | `#ff6b6b` | Delete buttons, warnings |
 | Text Primary | `#e0e0e0` | Main text content |
 | Text Secondary | `#b2b2d0` | Subtext, descriptions |
-| Card Background | `rgba(20, 20, 35, 0.95)` | Todo cards and forms |
+| Card Background | `rgba(20, 20, 35, 0.8)` | Todo cards and forms |
 | Border | `rgba(108, 92, 231, 0.2)` | Subtle borders |
 
 ## 💻 Component Documentation
 
-### Header Component
+### App Component
+- **Features**: ThemeProvider setup, routing, state management
+- **Theme**: Custom Material-UI dark theme with gradient accents
+
+### Header Component (Material-UI)
 - **Props**: `head` - Title of the app
-- **Features**: Navigation links, responsive design
+- **Features**: AppBar with navigation links, responsive design, gradient logo
 
-### AddTodo Component  
+### AddTodo Component (Material-UI)
 - **Props**: `add` - Function to add new todo
-- **Features**: Form validation, input fields
+- **Features**: Form validation, TextField components, animated button
 
-### EditTodo Component
+### EditTodo Component (Material-UI)
 - **Props**: `edit`, `esno`, `etitle`, `edesc` - Edit function and todo data
-- **Features**: Pre-filled form, update functionality
+- **Features**: Pre-filled form, update functionality, Material-UI components
 
-### TodoList Component
+### TodoList Component (Material-UI)
 - **Props**: `todos`, `delTodo`, `edtTodo` - Todo array and handlers
-- **Features**: Empty state, todo rendering
+- **Features**: Empty state with icon, todo rendering with animations
 
-### TodoItem Component
+### TodoItem Component (Material-UI)
 - **Props**: `todo`, `delTodo`, `edtTodo` - Todo item and handlers
-- **Features**: Hover effects, action buttons
+- **Features**: Hover effects, IconButton actions, glassmorphism design
 
-### About Component
-- **Features**: Information about the app, feature highlights
+### About Component (Material-UI)
+- **Features**: Information about the app, feature cards with icons
+
+### Footer Component (Material-UI)
+- **Features**: Sticky footer with heart icon and copyright
 
 ## 🔧 Configuration
 
 ### Changing the App Name
 In `App.js`:
 
-`jsx
+```jsx
 <Header head="My Todo List" />  // Change this text
-`
+```
 
-### Modifying Storage Method
-The app currently uses localStorage. To change to a different storage method, modify the `useEffect` hook in `App.js`:
+### Modifying the Theme
+In `App.js`, update the theme object:
 
-`jsx
-useEffect(() => {
-  localStorage.setItem("todos", JSON.stringify(todos));
-}, [todos])
-`
+```jsx
+const theme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#6c5ce7',  // Change primary color
+    },
+    // ... other theme options
+  },
+});
+```
 
 ### Styling Customization
-All styling is done inline with CSS-in-JS. You can modify the style objects in each component:
+Components use Material-UI's `sx` prop for styling. You can modify any component's styles:
 
-`jsx
-const styleAddTodo = {
-  background: 'rgba(20, 20, 35, 0.95)',
-  borderRadius: '15px',
-  // ... modify these values
-}
-`
+```jsx
+<Paper
+  sx={{
+    p: 4,           // Padding
+    mb: 4,          // Margin bottom
+    background: 'rgba(20, 20, 35, 0.8)',
+    borderRadius: 3, // Rounded corners
+  }}
+>
+```
 
 ## 📱 Responsive Design
 
@@ -205,20 +222,44 @@ The app is fully responsive and works on:
 
 ## 🐛 Common Issues & Solutions
 
+### Issue: "CheckCircleOutline not found"
+**Solution**: Use `CheckCircle` instead of `CheckCircleOutline`. Update the import in TodoList.jsx:
+
+```jsx
+import { CheckCircle } from '@mui/icons-material';  // Correct
+// NOT: import { CheckCircleOutline } from '@mui/icons-material';
+```
+
 ### Issue: "Cannot set properties of undefined"
 **Solution**: This occurs when trying to edit a todo that doesn't exist. The latest update includes proper error handling with validation.
 
 ### Issue: Todos not saving
 **Solution**: Ensure localStorage is enabled in your browser. If using incognito mode, todos won't persist.
 
-### Issue: Icons not showing
-**Solution**: Make sure Bootstrap Icons CDN is properly included in your `index.html`.
+### Issue: Material-UI styles not applying
+**Solution**: Make sure all dependencies are installed:
+
+```bash
+npm install @mui/material @emotion/react @emotion/styled @mui/icons-material
+```
 
 ### Issue: App not starting
 **Solution**: 
 1. Delete `node_modules` folder
 2. Delete `package-lock.json`
 3. Run `npm install` again
+
+## 🎨 Material-UI Icons Reference
+
+| Component | Icon Import | Usage |
+|-----------|-------------|-------|
+| AddTodo | `Add, Send` | Add button and submit |
+| EditTodo | `Edit, Update` | Edit button and update |
+| TodoList | `ListAlt, CheckCircle` | Header and empty state |
+| TodoItem | `Delete, Edit, CheckCircle` | Action buttons |
+| Header | `CheckBox, Home, Info` | Logo and navigation |
+| Footer | `Favorite` | Heart icon |
+| About | `AddBox, Edit, Delete, CloudUpload` | Feature cards |
 
 ## 🤝 Contributing
 
@@ -241,7 +282,7 @@ We welcome contributions! Here's how you can help:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-`
+```
 MIT License
 
 Copyright (c) 2024 Falak Patel
@@ -263,20 +304,20 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-`
+```
 
 ## 👏 Acknowledgments
 
-- **Bootstrap** - For the responsive grid system
+- **Material-UI** - For the amazing component library
 - **React Router** - For seamless navigation
-- **Bootstrap Icons** - For the beautiful icon set
+- **Emotion** - For CSS-in-JS styling
 - **React Community** - For the amazing ecosystem
 
 ## 📞 Contact
 
 **Falak Patel**
-- 📧 Email: falakpatel213@gmail.com
-- 🐙 GitHub: [@falakpatel](https://github.com/FalakPatel213)
+- 📧 Email: falak.patel@example.com
+- 🐙 GitHub: [@falakpatel](https://github.com/falakpatel)
 - 🔗 LinkedIn: [Falak Patel](https://www.linkedin.com/in/falakpatel213)
 
 ## 🌟 Show Your Support
@@ -291,7 +332,7 @@ If you found this project helpful, please consider:
 
 <div align="center">
 
-**Made with ❤️ by Falak Patel**
+**2026&copy; [FalakPatel213](https://github.com/FalakPatel213)**
 
 [⬆ Back to Top](#-todo-list-application)
 
