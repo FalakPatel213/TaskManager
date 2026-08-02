@@ -1,8 +1,5 @@
-
-
 import React from 'react';
 import { Box, Typography, Container } from '@mui/material';
-import { Favorite } from '@mui/icons-material';
 
 function Footer() {
     return (

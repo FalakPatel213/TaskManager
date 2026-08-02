@@ -6,7 +6,6 @@ import {
     Grid,
     Card,
     CardContent,
-    useTheme,
 } from '@mui/material';
 import {
     AddBox,
@@ -16,8 +15,6 @@ import {
 } from '@mui/icons-material';
 
 function About() {
-    const theme = useTheme();
-
     const features = [
         {
             icon: <AddBox sx={{ fontSize: 40, color: '#6c5ce7' }} />,

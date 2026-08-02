@@ -5,7 +5,6 @@ import {
     Typography,
     TextField,
     Button,
-    Box,
     Alert,
 } from '@mui/material';
 import { Add, Send } from '@mui/icons-material';
