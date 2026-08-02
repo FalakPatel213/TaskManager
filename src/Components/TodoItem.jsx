@@ -1,99 +1,100 @@
-import React from 'react'
+import React from 'react';
+import {
+    Paper,
+    Typography,
+    Box,
+    IconButton,
+    Chip,
+} from '@mui/material';
+import { Delete, Edit, CheckCircle } from '@mui/icons-material';
 
 function TodoItem({ todo, delTodo, edtTodo }) {
-  const styleTodoItem = {
-    padding: '25px',
-    margin: '15px 0',
-    border: 'none',
-    borderRadius: '15px',
-    background: 'rgba(255, 255, 255, 0.95)',
-    width: '100%',
-    maxWidth: '500px',
-    boxShadow: '0 5px 20px rgba(0,0,0,0.08)',
-    transition: 'all 0.3s ease',
-    backdropFilter: 'blur(10px)',
-  }
-
-  const stylePara = {
-    display: 'flex',
-    justifyContent: 'center',
-    overflowWrap: 'anywhere',
-    margin: '0',
-  }
-
-  const btnDiv = {
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '15px',
-    marginTop: '15px',
-  }
-
-  return (
-    <div 
-      className='text-dark fade-in' 
-      style={styleTodoItem}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = 'translateY(-5px)';
-        e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)';
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = 'translateY(0)';
-        e.currentTarget.style.boxShadow = '0 5px 20px rgba(0,0,0,0.08)';
-      }}
-    >
-      <h4 className='fw-bold text-primary' style={stylePara}>
-        <i className="bi bi-check-circle-fill text-success me-2" style={{fontSize: '0.8rem'}}></i>
-        {todo.title}
-      </h4>
-      <p className='text-secondary mt-2' style={stylePara}>
-        {todo.desc}
-      </p>
-      <div style={btnDiv}>
-        <button 
-          className="btn btn-outline-danger btn-sm px-4"
-          style={{
-            borderRadius: '20px',
-            transition: 'all 0.3s ease',
-          }}
-          onClick={() => { delTodo(todo) }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'scale(1.05)';
-            e.currentTarget.style.background = '#dc3545';
-            e.currentTarget.style.color = '#fff';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'scale(1)';
-            e.currentTarget.style.background = 'transparent';
-            e.currentTarget.style.color = '#dc3545';
-          }}
+    return (
+        <Paper
+            elevation={0}
+            sx={{
+                p: 3,
+                mb: 2,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                background: 'rgba(20, 20, 35, 0.8)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(108, 92, 231, 0.15)',
+                borderRadius: 2,
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                    transform: 'translateY(-4px)',
+                    borderColor: 'rgba(108, 92, 231, 0.4)',
+                    boxShadow: '0 8px 30px rgba(0,0,0,0.3)',
+                },
+            }}
         >
-          <i className="bi bi-trash me-1"></i>
-          Delete
-        </button>
-        <button 
-          className="btn btn-outline-primary btn-sm px-4"
-          style={{
-            borderRadius: '20px',
-            transition: 'all 0.3s ease',
-          }}
-          onClick={() => { edtTodo(todo) }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'scale(1.05)';
-            e.currentTarget.style.background = '#0d6efd';
-            e.currentTarget.style.color = '#fff';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'scale(1)';
-            e.currentTarget.style.background = 'transparent';
-            e.currentTarget.style.color = '#0d6efd';
-          }}
-        >
-          <i className="bi bi-pencil me-1"></i>
-          Edit
-        </button>
-      </div>
-    </div>
-  )
+            <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2, flex: 1 }}>
+                <CheckCircle sx={{ color: '#6c5ce7', mt: 0.5, fontSize: 20 }} />
+                <Box>
+                    <Typography
+                        variant="h6"
+                        sx={{
+                            color: '#a29bfe',
+                            fontWeight: 500,
+                            mb: 0.5,
+                        }}
+                    >
+                        {todo.title}
+                    </Typography>
+                    <Typography
+                        variant="body2"
+                        sx={{
+                            color: '#b2b2d0',
+                            wordBreak: 'break-word',
+                        }}
+                    >
+                        {todo.desc}
+                    </Typography>
+                    <Chip
+                        label={`#${todo.sno}`}
+                        size="small"
+                        sx={{
+                            mt: 1,
+                            background: 'rgba(108, 92, 231, 0.2)',
+                            color: '#a29bfe',
+                            fontSize: '0.7rem',
+                        }}
+                    />
+                </Box>
+            </Box>
+
+            <Box sx={{ display: 'flex', gap: 1, ml: 2 }}>
+                <IconButton
+                    onClick={() => edtTodo(todo)}
+                    sx={{
+                        color: '#6c5ce7',
+                        '&:hover': {
+                            background: 'rgba(108, 92, 231, 0.2)',
+                            transform: 'scale(1.1)',
+                        },
+                        transition: 'all 0.3s ease',
+                    }}
+                >
+                    <Edit />
+                </IconButton>
+                <IconButton
+                    onClick={() => delTodo(todo)}
+                    sx={{
+                        color: '#ff6b6b',
+                        '&:hover': {
+                            background: 'rgba(255, 107, 107, 0.2)',
+                            transform: 'scale(1.1)',
+                        },
+                        transition: 'all 0.3s ease',
+                    }}
+                >
+                    <Delete />
+                </IconButton>
+            </Box>
+        </Paper>
+    );
 }
 
-export default TodoItem
+export default TodoItem;

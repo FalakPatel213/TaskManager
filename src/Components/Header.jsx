@@ -1,55 +1,73 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
+import { CheckBox, Home, Info } from '@mui/icons-material';
 
 function Header(props) {
-    const colorSheet = {
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        boxShadow: '0 2px 15px rgba(0,0,0,0.2)',
-        padding: '10px 0',
-    }
-
-    const {
-        head = "Todo List",
-    } = props;
+    const { head = "Todo List" } = props;
 
     return (
-        <nav className="navbar navbar-expand-lg" style={colorSheet}>
-            <div className="container-fluid px-4">
-                <Link className="navbar-brand text-white fw-bold fs-3" to="/">
-                    <i className="bi bi-check2-square me-2"></i>
-                    {head}
-                </Link>
-                <button className="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <Link className="nav-link text-white px-3 hover-effect" aria-current="page" to="/">
-                                <i className="bi bi-house-door me-1"></i>
-                                Home
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link text-white px-3 hover-effect" to="/about">
-                                <i className="bi bi-info-circle me-1"></i>
-                                About
-                            </Link>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <style>
-                {`
-                    .hover-effect:hover {
-                        background: rgba(255,255,255,0.15);
-                        border-radius: 8px;
-                        transform: translateY(-2px);
-                        transition: all 0.3s ease;
-                    }
-                `}
-            </style>
-        </nav>
+        <AppBar position="sticky" elevation={0} sx={{ 
+            background: 'linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%)',
+            borderBottom: '1px solid rgba(108, 92, 231, 0.2)',
+        }}>
+            <Toolbar sx={{ justifyContent: 'space-between', flexWrap: 'wrap' }}>
+                <Typography
+                    variant="h5"
+                    component={Link}
+                    to="/"
+                    sx={{
+                        textDecoration: 'none',
+                        color: 'white',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 1,
+                        fontWeight: 600,
+                        '&:hover': { opacity: 0.8 },
+                    }}
+                >
+                    <CheckBox sx={{ color: '#6c5ce7' }} />
+                    <Box component="span" sx={{ 
+                        background: 'linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                    }}>
+                        {head}
+                    </Box>
+                </Typography>
+
+                <Box sx={{ display: 'flex', gap: 1 }}>
+                    <Button
+                        component={Link}
+                        to="/"
+                        color="inherit"
+                        startIcon={<Home />}
+                        sx={{
+                            borderRadius: 2,
+                            '&:hover': {
+                                background: 'rgba(108, 92, 231, 0.2)',
+                            },
+                        }}
+                    >
+                        Home
+                    </Button>
+                    <Button
+                        component={Link}
+                        to="/about"
+                        color="inherit"
+                        startIcon={<Info />}
+                        sx={{
+                            borderRadius: 2,
+                            '&:hover': {
+                                background: 'rgba(108, 92, 231, 0.2)',
+                            },
+                        }}
+                    >
+                        About
+                    </Button>
+                </Box>
+            </Toolbar>
+        </AppBar>
     )
 }
 

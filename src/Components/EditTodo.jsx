@@ -1,95 +1,123 @@
-import React from 'react'
-import { useState } from 'react'
+import React from 'react';
+import { useState } from 'react';
+import {
+    Paper,
+    Typography,
+    TextField,
+    Button,
+    Box,
+} from '@mui/material';
+import { Edit, Update } from '@mui/icons-material';
 
 function EditTodo({ edit, esno, etitle, edesc }) {
-    const styleAddTodo = {
-        background: 'rgba(255, 255, 255, 0.95)',
-        paddingTop: '30px',
-        paddingBottom: '30px',
-        display: 'grid',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: '15px',
-        margin: '20px auto',
-        maxWidth: '600px',
-        boxShadow: '0 10px 40px rgba(0,0,0,0.1)',
-        backdropFilter: 'blur(10px)',
-        width: '90%',
-    }
-
-    const styleTextBox = {
-        width: '100%',
-        maxWidth: '400px',
-        padding: '12px 15px',
-        border: '2px solid #e0e0e0',
-        borderRadius: '10px',
-        transition: 'all 0.3s ease',
-        fontSize: '16px',
-    }
-
-    const [sno, setSno] = useState(esno)
-    const [title, setTitle] = useState(etitle)
-    const [desc, setDesc] = useState(edesc)
+    const [sno, setSno] = useState(esno);
+    const [title, setTitle] = useState(etitle);
+    const [desc, setDesc] = useState(edesc);
 
     const editBtn = (e) => {
         e.preventDefault();
-        edit(sno, title, desc)
-        setSno(-1)
-        setTitle("")
-        setDesc("")
-    }
+        edit(sno, title.trim(), desc.trim());
+        setSno(-1);
+        setTitle("");
+        setDesc("");
+    };
 
     return (
-        <div className='text-center fade-in' style={styleAddTodo}>
-            <h3 className='text-warning fw-bold mb-4'>
-                <i className="bi bi-pencil-square me-2"></i>
+        <Paper
+            elevation={0}
+            sx={{
+                p: 4,
+                mb: 4,
+                background: 'rgba(20, 20, 35, 0.8)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 107, 107, 0.2)',
+                borderRadius: 3,
+            }}
+        >
+            <Typography
+                variant="h5"
+                sx={{
+                    mb: 3,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 1,
+                    color: '#ff6b6b',
+                }}
+            >
+                <Edit sx={{ color: '#ff6b6b' }} />
                 Edit Todo
-            </h3>
+            </Typography>
+
             <form onSubmit={editBtn}>
-                <div className="mb-3">
-                    <h5 className="form-label text-secondary">Title</h5>
-                    <input 
-                        type="text" 
-                        id='title' 
-                        value={title} 
-                        className="form-control" 
-                        onChange={(e) => setTitle(e.target.value)} 
-                        style={styleTextBox}
-                        placeholder="Enter todo title..."
-                    />
-                </div>
-                <div className="mb-3">
-                    <h5 className="form-label text-secondary">Description</h5>
-                    <input 
-                        type='text' 
-                        id='desc' 
-                        value={desc} 
-                        className="form-control" 
-                        onChange={(e) => setDesc(e.target.value)} 
-                        style={styleTextBox}
-                        placeholder="Enter todo description..."
-                    />
-                </div>
-                <button 
-                    type="submit" 
-                    className="btn btn-warning btn-lg px-5 mt-2"
-                    style={{
-                        borderRadius: '25px',
-                        boxShadow: '0 4px 15px rgba(255, 193, 7, 0.4)',
-                        border: 'none',
-                        color: '#fff',
-                        fontWeight: 'bold',
+                <TextField
+                    fullWidth
+                    label="Title"
+                    variant="outlined"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    sx={{
+                        mb: 2,
+                        '& .MuiOutlinedInput-root': {
+                            '& fieldset': {
+                                borderColor: 'rgba(255, 107, 107, 0.3)',
+                            },
+                            '&:hover fieldset': {
+                                borderColor: '#ff6b6b',
+                            },
+                            '&.Mui-focused fieldset': {
+                                borderColor: '#ff6b6b',
+                            },
+                        },
+                        '& .MuiInputLabel-root': {
+                            color: '#b2b2d0',
+                        },
+                    }}
+                />
+                <TextField
+                    fullWidth
+                    label="Description"
+                    variant="outlined"
+                    value={desc}
+                    onChange={(e) => setDesc(e.target.value)}
+                    sx={{
+                        mb: 3,
+                        '& .MuiOutlinedInput-root': {
+                            '& fieldset': {
+                                borderColor: 'rgba(255, 107, 107, 0.3)',
+                            },
+                            '&:hover fieldset': {
+                                borderColor: '#ff6b6b',
+                            },
+                            '&.Mui-focused fieldset': {
+                                borderColor: '#ff6b6b',
+                            },
+                        },
+                        '& .MuiInputLabel-root': {
+                            color: '#b2b2d0',
+                        },
+                    }}
+                />
+                <Button
+                    type="submit"
+                    variant="contained"
+                    fullWidth
+                    endIcon={<Update />}
+                    sx={{
+                        py: 1.5,
+                        background: 'linear-gradient(135deg, #ff6b6b 0%, #cc5555 100%)',
+                        '&:hover': {
+                            background: 'linear-gradient(135deg, #ff7b7b 0%, #dd5555 100%)',
+                            transform: 'translateY(-2px)',
+                            boxShadow: '0 4px 20px rgba(255, 107, 107, 0.4)',
+                        },
                         transition: 'all 0.3s ease',
                     }}
-                    onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
-                    onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
                 >
-                    <i className="bi bi-check-lg me-2"></i>
                     Update Todo
-                </button>
+                </Button>
             </form>
-        </div>
-    )
+        </Paper>
+    );
 }
 
-export default EditTodo
+export default EditTodo;

@@ -1,63 +1,128 @@
-import React from 'react'
+import React from 'react';
+import {
+    Paper,
+    Typography,
+    Box,
+    Grid,
+    Card,
+    CardContent,
+    useTheme,
+} from '@mui/material';
+import {
+    AddBox,
+    Edit,
+    Delete,
+    CloudUpload,
+} from '@mui/icons-material';
 
 function About() {
-    const styleAbout = {
-        minHeight: '80vh',
-        padding: '40px',
-        background: 'rgba(255, 255, 255, 0.95)',
-        borderRadius: '20px',
-        margin: '30px auto',
-        maxWidth: '800px',
-        boxShadow: '0 10px 40px rgba(0,0,0,0.1)',
-        backdropFilter: 'blur(10px)',
-        width: '90%',
-    }
+    const theme = useTheme();
+
+    const features = [
+        {
+            icon: <AddBox sx={{ fontSize: 40, color: '#6c5ce7' }} />,
+            title: 'Add Tasks',
+            description: 'Easily add new todos with title and description',
+        },
+        {
+            icon: <Edit sx={{ fontSize: 40, color: '#ff6b6b' }} />,
+            title: 'Edit Tasks',
+            description: 'Modify existing todos to keep them up to date',
+        },
+        {
+            icon: <Delete sx={{ fontSize: 40, color: '#ff6b6b' }} />,
+            title: 'Delete Tasks',
+            description: 'Remove todos that are no longer needed',
+        },
+        {
+            icon: <CloudUpload sx={{ fontSize: 40, color: '#6c5ce7' }} />,
+            title: 'Persistent Storage',
+            description: 'Your todos are saved in localStorage for convenience',
+        },
+    ];
 
     return (
-        <div style={styleAbout} className='fade-in'>
-            <div className="text-center mb-4">
-                <i className="bi bi-info-circle-fill text-primary" style={{fontSize: '3rem'}}></i>
-                <h1 className="fw-bold mt-3 text-primary">About Todo App</h1>
-                <div className="border-bottom w-25 mx-auto my-3"></div>
-            </div>
-            <div className="container">
-                <p className="lead text-secondary" style={{lineHeight: '2'}}>
-                    <i className="bi bi-check2-square text-success me-2"></i>
-                    Welcome to my Todo List Application! This is a powerful and intuitive task management tool built with React.
-                </p>
-                <div className="row mt-4">
-                    <div className="col-md-6 mb-3">
-                        <div className="p-3 bg-light rounded-3 h-100">
-                            <i className="bi bi-plus-circle fs-2 text-primary d-block mb-2"></i>
-                            <h5>Add Tasks</h5>
-                            <p className="text-secondary">Easily add new todos with title and description</p>
-                        </div>
-                    </div>
-                    <div className="col-md-6 mb-3">
-                        <div className="p-3 bg-light rounded-3 h-100">
-                            <i className="bi bi-pencil-square fs-2 text-warning d-block mb-2"></i>
-                            <h5>Edit Tasks</h5>
-                            <p className="text-secondary">Modify existing todos to keep them up to date</p>
-                        </div>
-                    </div>
-                    <div className="col-md-6 mb-3">
-                        <div className="p-3 bg-light rounded-3 h-100">
-                            <i className="bi bi-trash fs-2 text-danger d-block mb-2"></i>
-                            <h5>Delete Tasks</h5>
-                            <p className="text-secondary">Remove todos that are no longer needed</p>
-                        </div>
-                    </div>
-                    <div className="col-md-6 mb-3">
-                        <div className="p-3 bg-light rounded-3 h-100">
-                            <i className="bi bi-cloud-check fs-2 text-success d-block mb-2"></i>
-                            <h5>Persistent Storage</h5>
-                            <p className="text-secondary">Your todos are saved in localStorage for convenience</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
+        <Paper
+            elevation={0}
+            sx={{
+                p: 4,
+                background: 'rgba(20, 20, 35, 0.8)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(108, 92, 231, 0.2)',
+                borderRadius: 3,
+                minHeight: '70vh',
+            }}
+        >
+            <Box sx={{ textAlign: 'center', mb: 4 }}>
+                <Typography
+                    variant="h4"
+                    sx={{
+                        background: 'linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        fontWeight: 600,
+                        mb: 1,
+                    }}
+                >
+                    About Todo App
+                </Typography>
+                <Typography
+                    variant="body1"
+                    sx={{
+                        color: '#b2b2d0',
+                        maxWidth: 600,
+                        mx: 'auto',
+                    }}
+                >
+                    A powerful and intuitive task management tool built with React
+                </Typography>
+            </Box>
+
+            <Grid container spacing={3}>
+                {features.map((feature, index) => (
+                    <Grid item xs={12} sm={6} key={index}>
+                        <Card
+                            elevation={0}
+                            sx={{
+                                height: '100%',
+                                background: 'rgba(0, 0, 0, 0.3)',
+                                border: '1px solid rgba(108, 92, 231, 0.1)',
+                                borderRadius: 2,
+                                transition: 'all 0.3s ease',
+                                '&:hover': {
+                                    transform: 'translateY(-4px)',
+                                    borderColor: 'rgba(108, 92, 231, 0.3)',
+                                    boxShadow: '0 8px 30px rgba(0,0,0,0.3)',
+                                },
+                            }}
+                        >
+                            <CardContent sx={{ textAlign: 'center', p: 3 }}>
+                                <Box sx={{ mb: 2 }}>{feature.icon}</Box>
+                                <Typography
+                                    variant="h6"
+                                    sx={{
+                                        color: '#a29bfe',
+                                        mb: 1,
+                                        fontWeight: 500,
+                                    }}
+                                >
+                                    {feature.title}
+                                </Typography>
+                                <Typography
+                                    variant="body2"
+                                    sx={{
+                                        color: '#888',
+                                    }}
+                                >
+                                    {feature.description}
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                ))}
+            </Grid>
+        </Paper>
+    );
 }
 
-export default About
+export default About;

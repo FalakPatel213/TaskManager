@@ -1,53 +1,63 @@
-import React from 'react'
+import React from 'react';
 import TodoItem from './TodoItem';
+import { Box, Typography, Paper } from '@mui/material';
+import { ListAlt, CheckCircle } from '@mui/icons-material';
 
 function TodoList(props) {
-  const styleSheet = {
-    minHeight: 'auto',
-    minWidth: '100%',
-    padding: '20px',
-    background: 'transparent',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'top',
-    alignItems: 'center',
-  }
+    const { todos, delTodo, edtTodo } = props;
 
-  const styleHead = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: '20px',
-    marginBottom: '20px',
-    color: '#fff',
-    fontSize: '2.5rem',
-    fontWeight: 'bold',
-    textShadow: '2px 2px 4px rgba(0,0,0,0.2)',
-  }
+    return (
+        <Box>
+            <Typography
+                variant="h5"
+                sx={{
+                    mb: 3,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 1,
+                    background: 'linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    fontWeight: 600,
+                }}
+            >
+                <ListAlt sx={{ color: '#6c5ce7', WebkitTextFillColor: '#6c5ce7' }} />
+                Your Todo List
+            </Typography>
 
-  return (
-    <div className='container'>
-      <h2 style={styleHead}>
-        <i className="bi bi-list-task me-3"></i>
-        Your Todo List
-      </h2>
-      <div style={styleSheet}>
-        {props.todos.length === 0 ? (
-          <div className="text-center text-white py-5">
-            <i className="bi bi-check-circle fs-1 mb-3 d-block"></i>
-            <h3 className="fw-light">No Todos Yet!</h3>
-            <p className="text-light-50">Start by adding a new todo above.</p>
-          </div>
-        ) : (
-          props.todos.map((todo) => {
-            return (
-              <TodoItem todo={todo} key={todo.sno} delTodo={props.delTodo} edtTodo={props.edtTodo} />
-            )
-          })
-        )}
-      </div>
-    </div>
-  )
+            {todos.length === 0 ? (
+                <Paper
+                    elevation={0}
+                    sx={{
+                        p: 6,
+                        textAlign: 'center',
+                        background: 'rgba(20, 20, 35, 0.6)',
+                        backdropFilter: 'blur(10px)',
+                        border: '1px solid rgba(108, 92, 231, 0.1)',
+                        borderRadius: 3,
+                    }}
+                >
+                    <CheckCircle sx={{ fontSize: 64, color: '#6c5ce7', mb: 2 }} />
+                    <Typography variant="h6" sx={{ color: '#b2b2d0' }}>
+                        No Todos Yet!
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: '#666' }}>
+                        Start by adding a new todo above.
+                    </Typography>
+                </Paper>
+            ) : (
+                todos.map((todo) => (
+                    <TodoItem
+                        key={todo.sno}
+                        todo={todo}
+                        delTodo={delTodo}
+                        edtTodo={edtTodo}
+                    />
+                ))
+            )}
+        </Box>
+    );
 }
 
-export default TodoList
+export default TodoList;
