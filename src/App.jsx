@@ -31,7 +31,7 @@ function App() {
     let sno;
 
     if (todos.length === 0) {
-      sno = 0
+      sno = 1
     } else {
       sno = todos[0].sno + 1;
     }
@@ -81,29 +81,33 @@ function App() {
 
   const [todos, setTodos] = useState(init);
   const [edit, setEdit] = useState(false);
+  
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos])
 
-
   return (
     <Router>
-      <Header head="My todo list" />
-      <Routes>
-        <Route exact path="/" element={
-          <>
-            {
-              edit ? <EditTodo edit={editTodoForm} esno = {sno} etitle = {title} edesc = {desc}/> :
-              <AddTodo add={addTodo} />
-            }
-            <TodoList todos={todos} delTodo={deleteTodo} edtTodo={editTodo} />
-          </>
-        } />
-        <Route exact path="/about" element={
-          <About />
-        } />
-      </Routes>
-      <Footer />
+      <div className="App">
+        <Header head="My Todo List" />
+        <main style={{flex: '1', padding: '20px 0'}}>
+          <Routes>
+            <Route exact path="/" element={
+              <>
+                {
+                  edit ? <EditTodo edit={editTodoForm} esno = {sno} etitle = {title} edesc = {desc}/> :
+                  <AddTodo add={addTodo} />
+                }
+                <TodoList todos={todos} delTodo={deleteTodo} edtTodo={editTodo} />
+              </>
+            } />
+            <Route exact path="/about" element={
+              <About />
+            } />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </Router>
   )
 }
