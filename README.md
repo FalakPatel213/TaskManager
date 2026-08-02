@@ -76,7 +76,7 @@ The build folder is ready to be deployed.
 
 ## 📁 Project Structure
 
-`
+```
 todo-list-app/
 ├── public/
 │   ├── index.html
@@ -96,7 +96,7 @@ todo-list-app/
 ├── package.json
 ├── README.md
 └── .gitignore
-`
+```
 
 ## 🎯 Usage Guide
 
