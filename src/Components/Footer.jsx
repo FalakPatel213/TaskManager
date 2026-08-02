@@ -15,7 +15,7 @@ function Footer() {
       <div className="container">
         <p className="mb-0">
           <i className="bi bi-heart-fill text-danger me-2"></i>
-          Made with love by <strong><a href='https://github.com/FalakPatel213' target='_blank' style={{color:'#fff', textDecoration: 'none' }}>Falak Patel</a></strong>
+          Made with love by <strong><a href='https://github.com/FalakPatel213' target='_blank' rel="noopener noreferrer" style={{color:'#fff', textDecoration: 'none' }}>Falak Patel</a></strong>
           <i className="bi bi-heart-fill text-danger ms-2"></i>
         </p>
         <p className="mb-0 mt-1" style={{fontSize: '0.9rem', opacity: '0.9'}}>
