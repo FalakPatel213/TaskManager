@@ -1,4 +1,4 @@
-# 📝 Task Manager Application
+# 📝 Task Management Application
 
 A modern, feature-rich Task List application built with React.js and Material-UI. This application provides a seamless task management experience with a sleek dark theme design and persistent storage.
 
@@ -38,8 +38,8 @@ A modern, feature-rich Task List application built with React.js and Material-UI
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/FalakPatel213/TaskManager
-cd TaskManager
+git clone https://github.com/FalakPatel213/TaskManagement
+cd TaskManagement
 ```
 
 2. **Install dependencies**
@@ -77,7 +77,7 @@ The build folder is ready to be deployed.
 ## 📁 Project Structure
 
 ```
-TaskManager/
+TaskManagement/
 ├── public/
 │   ├── index.html
 │   └── favicon.ico
@@ -176,7 +176,7 @@ TaskManager/
 In `App.js`:
 
 ```jsx
-<Header head="Task Manager" />  // Change this text
+<Header head="Task Management" />  // Change this text
 ```
 
 ### Modifying the Theme
@@ -333,6 +333,6 @@ If you found this project helpful, please consider:
 
 **2026&copy; [FalakPatel213](https://github.com/FalakPatel213)**
 
-[⬆ Back to Top](#-task-manager-application)
+[⬆ Back to Top](#-task-management-application)
 
 </div>
