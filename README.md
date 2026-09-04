@@ -1,15 +1,14 @@
-# 📝 Todo List Application
+# 📝 Task Manager Application
 
-A modern, feature-rich Todo List application built with React.js and Material-UI. This application provides a seamless task management experience with a sleek dark theme design and persistent storage.
+A modern, feature-rich Task List application built with React.js and Material-UI. This application provides a seamless task management experience with a sleek dark theme design and persistent storage.
 
-![Todo App Demo](https://via.placeholder.com/800x400/1a1a2e/6c5ce7?text=Todo+List+App)
 
 ## ✨ Features
 
-- ✅ **Add Todos** - Create new tasks with title and description
-- ✏️ **Edit Todos** - Modify existing tasks easily
-- 🗑️ **Delete Todos** - Remove tasks you no longer need
-- 💾 **Persistent Storage** - All todos are saved in localStorage
+- ✅ **Add Tasks** - Create new tasks with title and description
+- ✏️ **Edit Tasks** - Modify existing tasks easily
+- 🗑️ **Delete Tasks** - Remove tasks you no longer need
+- 💾 **Persistent Storage** - All tasks are saved in localStorage
 - 🌙 **Dark Theme** - Modern dark UI with gradient accents
 - 🎨 **Material-UI Design** - Clean, minimal, and professional interface
 - 📱 **Responsive Design** - Works perfectly on all devices
@@ -39,8 +38,8 @@ A modern, feature-rich Todo List application built with React.js and Material-UI
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/yourusername/todo-list-app.git
-cd todo-list-app
+git clone https://github.com/FalakPatel213/TaskManager
+cd TaskManager
 ```
 
 2. **Install dependencies**
@@ -78,7 +77,7 @@ The build folder is ready to be deployed.
 ## 📁 Project Structure
 
 ```
-todo-list-app/
+TaskManager/
 ├── public/
 │   ├── index.html
 │   └── favicon.ico
@@ -86,10 +85,10 @@ todo-list-app/
 │   ├── Components/
 │   │   ├── Header.js         # Navigation bar with Material-UI
 │   │   ├── Footer.js         # Footer section with Material-UI
-│   │   ├── TodoList.js       # List of todos with Material-UI
-│   │   ├── TodoItem.js       # Individual todo item with Material-UI
-│   │   ├── AddTodo.js        # Add todo form with Material-UI
-│   │   ├── EditTodo.js       # Edit todo form with Material-UI
+│   │   ├── TaskList.js       # List of tasks with Material-UI
+│   │   ├── TaskItem.js       # Individual task item with Material-UI
+│   │   ├── AddTask.js        # Add task form with Material-UI
+│   │   ├── EditTask.js       # Edit task form with Material-UI
 │   │   └── About.js          # About page with Material-UI
 │   ├── App.js                # Main application with ThemeProvider
 │   ├── App.css               # Global styles
@@ -101,29 +100,29 @@ todo-list-app/
 
 ## 🎯 Usage Guide
 
-### 1. Adding a Todo
+### 1. Adding a Task
 
 ```
 1. Enter a title in the "Title" field
 2. Enter a description in the "Description" field  
-3. Click the "Add Todo" button
-4. Your new todo will appear in the list
+3. Click the "Add Task" button
+4. Your new task will appear in the list
 ```
 
-### 2. Editing a Todo
+### 2. Editing a Task
 
 ```
-1. Click the "Edit" button on any todo
+1. Click the "Edit" button on any task
 2. Modify the title and/or description
-3. Click the "Update Todo" button
-4. The todo will be updated instantly
+3. Click the "Update Task" button
+4. The task will be updated instantly
 ```
 
-### 3. Deleting a Todo
+### 3. Deleting a Task
 
 ```
-1. Click the "Delete" button on any todo
-2. The todo will be removed immediately
+1. Click the "Delete" button on any task
+2. The task will be removed immediately
 ```
 
 ## 🎨 Color Palette
@@ -136,7 +135,7 @@ todo-list-app/
 | Danger Accent | `#ff6b6b` | Delete buttons, warnings |
 | Text Primary | `#e0e0e0` | Main text content |
 | Text Secondary | `#b2b2d0` | Subtext, descriptions |
-| Card Background | `rgba(20, 20, 35, 0.8)` | Todo cards and forms |
+| Card Background | `rgba(20, 20, 35, 0.8)` | Task cards and forms |
 | Border | `rgba(108, 92, 231, 0.2)` | Subtle borders |
 
 ## 💻 Component Documentation
@@ -149,20 +148,20 @@ todo-list-app/
 - **Props**: `head` - Title of the app
 - **Features**: AppBar with navigation links, responsive design, gradient logo
 
-### AddTodo Component (Material-UI)
-- **Props**: `add` - Function to add new todo
+### AddTask Component (Material-UI)
+- **Props**: `add` - Function to add new task
 - **Features**: Form validation, TextField components, animated button
 
-### EditTodo Component (Material-UI)
-- **Props**: `edit`, `esno`, `etitle`, `edesc` - Edit function and todo data
+### EditTask Component (Material-UI)
+- **Props**: `edit`, `esno`, `etitle`, `edesc` - Edit function and task data
 - **Features**: Pre-filled form, update functionality, Material-UI components
 
-### TodoList Component (Material-UI)
-- **Props**: `todos`, `delTodo`, `edtTodo` - Todo array and handlers
-- **Features**: Empty state with icon, todo rendering with animations
+### TaskList Component (Material-UI)
+- **Props**: `tasks`, `delTask`, `edtTask` - Task array and handlers
+- **Features**: Empty state with icon, task rendering with animations
 
-### TodoItem Component (Material-UI)
-- **Props**: `todo`, `delTodo`, `edtTodo` - Todo item and handlers
+### TaskItem Component (Material-UI)
+- **Props**: `task`, `delTask`, `edtTask` - Task item and handlers
 - **Features**: Hover effects, IconButton actions, glassmorphism design
 
 ### About Component (Material-UI)
@@ -177,7 +176,7 @@ todo-list-app/
 In `App.js`:
 
 ```jsx
-<Header head="My Todo List" />  // Change this text
+<Header head="Task Manager" />  // Change this text
 ```
 
 ### Modifying the Theme
@@ -223,7 +222,7 @@ The app is fully responsive and works on:
 ## 🐛 Common Issues & Solutions
 
 ### Issue: "CheckCircleOutline not found"
-**Solution**: Use `CheckCircle` instead of `CheckCircleOutline`. Update the import in TodoList.jsx:
+**Solution**: Use `CheckCircle` instead of `CheckCircleOutline`. Update the import in TaskList.jsx:
 
 ```jsx
 import { CheckCircle } from '@mui/icons-material';  // Correct
@@ -231,10 +230,10 @@ import { CheckCircle } from '@mui/icons-material';  // Correct
 ```
 
 ### Issue: "Cannot set properties of undefined"
-**Solution**: This occurs when trying to edit a todo that doesn't exist. The latest update includes proper error handling with validation.
+**Solution**: This occurs when trying to edit a task that doesn't exist. The latest update includes proper error handling with validation.
 
-### Issue: Todos not saving
-**Solution**: Ensure localStorage is enabled in your browser. If using incognito mode, todos won't persist.
+### Issue: Tasks not saving
+**Solution**: Ensure localStorage is enabled in your browser. If using incognito mode, tasks won't persist.
 
 ### Issue: Material-UI styles not applying
 **Solution**: Make sure all dependencies are installed:
@@ -253,10 +252,10 @@ npm install @mui/material @emotion/react @emotion/styled @mui/icons-material
 
 | Component | Icon Import | Usage |
 |-----------|-------------|-------|
-| AddTodo | `Add, Send` | Add button and submit |
-| EditTodo | `Edit, Update` | Edit button and update |
-| TodoList | `ListAlt, CheckCircle` | Header and empty state |
-| TodoItem | `Delete, Edit, CheckCircle` | Action buttons |
+| AddTask | `Add, Send` | Add button and submit |
+| EditTask | `Edit, Update` | Edit button and update |
+| TaskList | `ListAlt, CheckCircle` | Header and empty state |
+| TaskItem | `Delete, Edit, CheckCircle` | Action buttons |
 | Header | `CheckBox, Home, Info` | Logo and navigation |
 | Footer | `Favorite` | Heart icon |
 | About | `AddBox, Edit, Delete, CloudUpload` | Feature cards |
@@ -316,8 +315,8 @@ SOFTWARE.
 ## 📞 Contact
 
 **Falak Patel**
-- 📧 Email: falak.patel@example.com
-- 🐙 GitHub: [@falakpatel](https://github.com/falakpatel)
+- 📧 Email: falakpatel213@gmail.com
+- 🐙 GitHub: [@falakpatel](https://github.com/FalakPatel213)
 - 🔗 LinkedIn: [Falak Patel](https://www.linkedin.com/in/falakpatel213)
 
 ## 🌟 Show Your Support
@@ -334,6 +333,6 @@ If you found this project helpful, please consider:
 
 **2026&copy; [FalakPatel213](https://github.com/FalakPatel213)**
 
-[⬆ Back to Top](#-todo-list-application)
+[⬆ Back to Top](#-task-manager-application)
 
 </div>
