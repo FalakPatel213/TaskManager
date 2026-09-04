@@ -159,7 +159,7 @@ function App() {
       <CssBaseline />
       <Router>
         <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-          <Header head="Task Management" />
+          <Header head="Task Management Application" />
           <Container maxWidth="md" sx={{ flex: 1, py: 4 }}>
             <Routes>
               <Route exact path="/" element={
