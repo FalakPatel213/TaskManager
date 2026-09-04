@@ -316,7 +316,7 @@ SOFTWARE.
 
 **Falak Patel**
 - 📧 Email: falakpatel213@gmail.com
-- 🐙 GitHub: [@falakpatel](https://github.com/FalakPatel213)
+- 🐙 GitHub: [FalakPatel213](https://github.com/FalakPatel213)
 - 🔗 LinkedIn: [Falak Patel](https://www.linkedin.com/in/falakpatel213)
 
 ## 🌟 Show Your Support
