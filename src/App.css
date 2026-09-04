@@ -16,12 +16,10 @@ body {
   flex-direction: column;
 }
 
-/* Smooth scroll */
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -39,7 +37,6 @@ html {
   background: #6c5ce7;
 }
 
-/* Animation for todos */
 @keyframes fadeInUp {
   from {
     opacity: 0;

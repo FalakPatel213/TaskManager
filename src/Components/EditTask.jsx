@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { Edit, Update } from '@mui/icons-material';
 
-function EditTodo({ edit, esno, etitle, edesc }) {
+function EditTask({ edit, esno, etitle, edesc }) {
     const [sno, setSno] = useState(esno);
     const [title, setTitle] = useState(etitle);
     const [desc, setDesc] = useState(edesc);
@@ -44,7 +44,7 @@ function EditTodo({ edit, esno, etitle, edesc }) {
                 }}
             >
                 <Edit sx={{ color: '#ff6b6b' }} />
-                Edit Todo
+                Edit Task
             </Typography>
 
             <form onSubmit={editBtn}>
@@ -112,11 +112,11 @@ function EditTodo({ edit, esno, etitle, edesc }) {
                         transition: 'all 0.3s ease',
                     }}
                 >
-                    Update Todo
+                    Update Task
                 </Button>
             </form>
         </Paper>
     );
 }
 
-export default EditTodo;
+export default EditTask;

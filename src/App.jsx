@@ -1,10 +1,10 @@
 import './App.css';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
-import TodoList from './Components/TodoList';
-import AddTodo from './Components/AddTodo';
+import TaskList from './Components/TaskList';
+import AddTask from './Components/AddTask';
 import About from './Components/About';
-import EditTodo from './Components/EditTodo';
+import EditTask from './Components/EditTask';
 import { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
@@ -72,49 +72,49 @@ const theme = createTheme({
 function App() {
   let init;
 
-  if (localStorage.getItem("todos") == null) {
+  if (localStorage.getItem("tasks") == null) {
     init = [];
   } else {
-    init = JSON.parse(localStorage.getItem("todos"));
+    init = JSON.parse(localStorage.getItem("tasks"));
   }
 
-  const deleteTodo = (td) => {
-    setTodos(todos.filter((e) => {
+  const deleteTask = (td) => {
+    setTasks(tasks.filter((e) => {
       return e !== td;
     }));
   }
 
-  const addTodo = (title, desc) => {
+  const addTask = (title, desc) => {
     let sno;
 
-    if (todos.length === 0) {
+    if (tasks.length === 0) {
       sno = 1
     } else {
-      sno = todos[0].sno + 1;
+      sno = tasks[0].sno + 1;
     }
 
-    const todo = {
+    const task = {
       sno: sno,
       title: title,
       desc: desc
     }; 
-    setTodos([todo, ...todos]);
+    setTasks([task, ...tasks]);
   }
 
-  const editTodo = (todo) => {
+  const editTask = (task) => {
     setEdit(true);
-    setSno(todo.sno);
-    setTitle(todo.title);
-    setDesc(todo.desc);
+    setSno(task.sno);
+    setTitle(task.title);
+    setDesc(task.desc);
   };
 
-  const editTodoForm = (esno, etitle, edesc) => {
-    const td = todos.filter((e) => {
+  const editTaskForm = (esno, etitle, edesc) => {
+    const td = tasks.filter((e) => {
       return e.sno === esno
     })
     
     if (td.length === 0) {
-      alert("Todo not found!");
+      alert("Task not found!");
       setEdit(false);
       return;
     }
@@ -132,7 +132,7 @@ function App() {
     }
     
     td[0].sno = esno;
-    setTodos((prev) => {
+    setTasks((prev) => {
       return prev.map((e) => {
         if (e.sno === td[0].sno) {
           return td[0]
@@ -147,28 +147,28 @@ function App() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
 
-  const [todos, setTodos] = useState(init);
+  const [tasks, setTasks] = useState(init);
   const [edit, setEdit] = useState(false);
   
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos])
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks])
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
         <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-          <Header head="My Todo List" />
+          <Header head="Task Manager" />
           <Container maxWidth="md" sx={{ flex: 1, py: 4 }}>
             <Routes>
               <Route exact path="/" element={
                 <>
                   {edit ? 
-                    <EditTodo edit={editTodoForm} esno={sno} etitle={title} edesc={desc} /> :
-                    <AddTodo add={addTodo} />
+                    <EditTask edit={editTaskForm} esno={sno} etitle={title} edesc={desc} /> :
+                    <AddTask add={addTask} />
                   }
-                  <TodoList todos={todos} delTodo={deleteTodo} edtTodo={editTodo} />
+                  <TaskList tasks={tasks} delTask={deleteTask} edtTask={editTask} />
                 </>
               } />
               <Route exact path="/about" element={<About />} />

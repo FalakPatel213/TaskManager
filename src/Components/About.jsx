@@ -19,22 +19,22 @@ function About() {
         {
             icon: <AddBox sx={{ fontSize: 40, color: '#6c5ce7' }} />,
             title: 'Add Tasks',
-            description: 'Easily add new todos with title and description',
+            description: 'Easily add new tasks with title and description',
         },
         {
             icon: <Edit sx={{ fontSize: 40, color: '#ff6b6b' }} />,
             title: 'Edit Tasks',
-            description: 'Modify existing todos to keep them up to date',
+            description: 'Modify existing tasks to keep them up to date',
         },
         {
             icon: <Delete sx={{ fontSize: 40, color: '#ff6b6b' }} />,
             title: 'Delete Tasks',
-            description: 'Remove todos that are no longer needed',
+            description: 'Remove tasks that are no longer needed',
         },
         {
             icon: <CloudUpload sx={{ fontSize: 40, color: '#6c5ce7' }} />,
             title: 'Persistent Storage',
-            description: 'Your todos are saved in localStorage for convenience',
+            description: 'Your tasks are saved in localStorage for convenience',
         },
     ];
 
@@ -61,7 +61,7 @@ function About() {
                         mb: 1,
                     }}
                 >
-                    About Todo App
+                    About Task Manager App
                 </Typography>
                 <Typography
                     variant="body1"

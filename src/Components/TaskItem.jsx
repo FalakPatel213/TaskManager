@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { Delete, Edit, CheckCircle } from '@mui/icons-material';
 
-function TodoItem({ todo, delTodo, edtTodo }) {
+function TaskItem({ task, delTask, edtTask }) {
     return (
         <Paper
             elevation={0}
@@ -41,7 +41,7 @@ function TodoItem({ todo, delTodo, edtTodo }) {
                             mb: 0.5,
                         }}
                     >
-                        {todo.title}
+                        {task.title}
                     </Typography>
                     <Typography
                         variant="body2"
@@ -50,10 +50,10 @@ function TodoItem({ todo, delTodo, edtTodo }) {
                             wordBreak: 'break-word',
                         }}
                     >
-                        {todo.desc}
+                        {task.desc}
                     </Typography>
                     <Chip
-                        label={`#${todo.sno}`}
+                        label={`#${task.sno}`}
                         size="small"
                         sx={{
                             mt: 1,
@@ -67,7 +67,7 @@ function TodoItem({ todo, delTodo, edtTodo }) {
 
             <Box sx={{ display: 'flex', gap: 1, ml: 2 }}>
                 <IconButton
-                    onClick={() => edtTodo(todo)}
+                    onClick={() => edtTask(task)}
                     sx={{
                         color: '#6c5ce7',
                         '&:hover': {
@@ -80,7 +80,7 @@ function TodoItem({ todo, delTodo, edtTodo }) {
                     <Edit />
                 </IconButton>
                 <IconButton
-                    onClick={() => delTodo(todo)}
+                    onClick={() => delTask(task)}
                     sx={{
                         color: '#ff6b6b',
                         '&:hover': {
@@ -97,4 +97,4 @@ function TodoItem({ todo, delTodo, edtTodo }) {
     );
 }
 
-export default TodoItem;
+export default TaskItem;

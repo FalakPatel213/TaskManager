@@ -4,7 +4,7 @@ import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import { CheckBox, Home, Info } from '@mui/icons-material';
 
 function Header(props) {
-    const { head = "Todo List" } = props;
+    const { head = "Task Manager" } = props;
 
     return (
         <AppBar position="sticky" elevation={0} sx={{ 
@@ -26,7 +26,6 @@ function Header(props) {
                         '&:hover': { opacity: 0.8 },
                     }}
                 >
-                    <CheckBox sx={{ color: '#6c5ce7' }} />
                     <Box component="span" sx={{ 
                         background: 'linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%)',
                         WebkitBackgroundClip: 'text',

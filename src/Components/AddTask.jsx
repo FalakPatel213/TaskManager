@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import { Add, Send } from '@mui/icons-material';
 
-function AddTodo({ add }) {
+function AddTask({ add }) {
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
     const [error, setError] = useState(false);
@@ -50,7 +50,7 @@ function AddTodo({ add }) {
                 }}
             >
                 <Add sx={{ color: '#6c5ce7' }} />
-                Add New Todo
+                Add New Task
             </Typography>
 
             {error && (
@@ -124,11 +124,11 @@ function AddTodo({ add }) {
                         transition: 'all 0.3s ease',
                     }}
                 >
-                    Add Todo
+                    Add Task
                 </Button>
             </form>
         </Paper>
     );
 }
 
-export default AddTodo;
+export default AddTask;

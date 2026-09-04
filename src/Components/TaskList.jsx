@@ -1,10 +1,10 @@
 import React from 'react';
-import TodoItem from './TodoItem';
+import TaskItem from './TaskItem';
 import { Box, Typography, Paper } from '@mui/material';
 import { ListAlt, CheckCircle } from '@mui/icons-material';
 
-function TodoList(props) {
-    const { todos, delTodo, edtTodo } = props;
+function TaskList(props) {
+    const { tasks, delTask, edtTask } = props;
 
     return (
         <Box>
@@ -23,10 +23,10 @@ function TodoList(props) {
                 }}
             >
                 <ListAlt sx={{ color: '#6c5ce7', WebkitTextFillColor: '#6c5ce7' }} />
-                Your Todo List
+                Your Tasks
             </Typography>
 
-            {todos.length === 0 ? (
+            {tasks.length === 0 ? (
                 <Paper
                     elevation={0}
                     sx={{
@@ -40,19 +40,19 @@ function TodoList(props) {
                 >
                     <CheckCircle sx={{ fontSize: 64, color: '#6c5ce7', mb: 2 }} />
                     <Typography variant="h6" sx={{ color: '#b2b2d0' }}>
-                        No Todos Yet!
+                        No Tasks Yet!
                     </Typography>
                     <Typography variant="body2" sx={{ color: '#666' }}>
-                        Start by adding a new todo above.
+                        Start by adding a new task above.
                     </Typography>
                 </Paper>
             ) : (
-                todos.map((todo) => (
-                    <TodoItem
-                        key={todo.sno}
-                        todo={todo}
-                        delTodo={delTodo}
-                        edtTodo={edtTodo}
+                tasks.map((task) => (
+                    <TaskItem
+                        key={task.sno}
+                        task={task}
+                        delTask={delTask}
+                        edtTask={edtTask}
                     />
                 ))
             )}
@@ -60,4 +60,4 @@ function TodoList(props) {
     );
 }
 
-export default TodoList;
+export default TaskList;
