@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
-import { CheckBox, Home, Info } from '@mui/icons-material';
+import { Home, Info } from '@mui/icons-material';
 
 function Header(props) {
     const { head = "Task Manager" } = props;
