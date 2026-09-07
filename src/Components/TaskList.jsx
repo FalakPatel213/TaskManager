@@ -2,9 +2,11 @@ import React from 'react';
 import TaskItem from './TaskItem';
 import { Box, Typography, Paper } from '@mui/material';
 import { ListAlt, CheckCircle } from '@mui/icons-material';
+import { useTheme } from './ThemeContext';
 
 function TaskList(props) {
     const { tasks, delTask, edtTask } = props;
+    const { isDark } = useTheme();
 
     return (
         <Box>
@@ -28,21 +30,23 @@ function TaskList(props) {
 
             {tasks.length === 0 ? (
                 <Paper
-                    elevation={0}
+                    elevation={isDark ? 0 : 2}
                     sx={{
                         p: 6,
                         textAlign: 'center',
-                        background: 'rgba(20, 20, 35, 0.6)',
+                        background: isDark 
+                            ? 'rgba(20, 20, 35, 0.6)'
+                            : 'rgba(255, 255, 255, 0.95)',
                         backdropFilter: 'blur(10px)',
-                        border: '1px solid rgba(108, 92, 231, 0.1)',
+                        border: `1px solid ${isDark ? 'rgba(108, 92, 231, 0.1)' : 'rgba(108, 92, 231, 0.05)'}`,
                         borderRadius: 3,
                     }}
                 >
                     <CheckCircle sx={{ fontSize: 64, color: '#6c5ce7', mb: 2 }} />
-                    <Typography variant="h6" sx={{ color: '#b2b2d0' }}>
+                    <Typography variant="h6" sx={{ color: isDark ? '#b2b2d0' : '#666' }}>
                         No Tasks Yet!
                     </Typography>
-                    <Typography variant="body2" sx={{ color: '#666' }}>
+                    <Typography variant="body2" sx={{ color: isDark ? '#666' : '#999' }}>
                         Start by adding a new task above.
                     </Typography>
                 </Paper>

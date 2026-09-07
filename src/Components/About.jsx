@@ -13,8 +13,11 @@ import {
     Delete,
     CloudUpload,
 } from '@mui/icons-material';
+import { useTheme } from './ThemeContext';
 
 function About() {
+    const { isDark } = useTheme();
+
     const features = [
         {
             icon: <AddBox sx={{ fontSize: 40, color: '#6c5ce7' }} />,
@@ -40,12 +43,14 @@ function About() {
 
     return (
         <Paper
-            elevation={0}
+            elevation={isDark ? 0 : 2}
             sx={{
                 p: 4,
-                background: 'rgba(20, 20, 35, 0.8)',
+                background: isDark 
+                    ? 'rgba(20, 20, 35, 0.8)'
+                    : 'rgba(255, 255, 255, 0.95)',
                 backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(108, 92, 231, 0.2)',
+                border: `1px solid ${isDark ? 'rgba(108, 92, 231, 0.2)' : 'rgba(108, 92, 231, 0.1)'}`,
                 borderRadius: 3,
                 minHeight: '70vh',
             }}
@@ -66,7 +71,7 @@ function About() {
                 <Typography
                     variant="body1"
                     sx={{
-                        color: '#b2b2d0',
+                        color: isDark ? '#b2b2d0' : '#666',
                         maxWidth: 600,
                         mx: 'auto',
                     }}
@@ -79,17 +84,19 @@ function About() {
                 {features.map((feature, index) => (
                     <Grid item xs={12} sm={6} key={index}>
                         <Card
-                            elevation={0}
+                            elevation={isDark ? 0 : 1}
                             sx={{
                                 height: '100%',
-                                background: 'rgba(0, 0, 0, 0.3)',
-                                border: '1px solid rgba(108, 92, 231, 0.1)',
+                                background: isDark 
+                                    ? 'rgba(0, 0, 0, 0.3)'
+                                    : 'rgba(245, 245, 247, 0.8)',
+                                border: `1px solid ${isDark ? 'rgba(108, 92, 231, 0.1)' : 'rgba(108, 92, 231, 0.05)'}`,
                                 borderRadius: 2,
                                 transition: 'all 0.3s ease',
                                 '&:hover': {
                                     transform: 'translateY(-4px)',
                                     borderColor: 'rgba(108, 92, 231, 0.3)',
-                                    boxShadow: '0 8px 30px rgba(0,0,0,0.3)',
+                                    boxShadow: isDark ? '0 8px 30px rgba(0,0,0,0.3)' : '0 8px 30px rgba(0,0,0,0.1)',
                                 },
                             }}
                         >
@@ -108,7 +115,7 @@ function About() {
                                 <Typography
                                     variant="body2"
                                     sx={{
-                                        color: '#888',
+                                        color: isDark ? '#888' : '#666',
                                     }}
                                 >
                                     {feature.description}

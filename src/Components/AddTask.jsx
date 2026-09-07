@@ -7,9 +7,11 @@ import {
     Button,
     Alert,
 } from '@mui/material';
-import { Add, Send } from '@mui/icons-material';
+import { Add } from '@mui/icons-material';
+import { useTheme } from './ThemeContext';
 
 function AddTask({ add }) {
+    const { isDark } = useTheme();
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
     const [error, setError] = useState(false);
@@ -29,13 +31,15 @@ function AddTask({ add }) {
 
     return (
         <Paper
-            elevation={0}
+            elevation={isDark ? 0 : 2}
             sx={{
                 p: 4,
                 mb: 4,
-                background: 'rgba(20, 20, 35, 0.8)',
+                background: isDark 
+                    ? 'rgba(20, 20, 35, 0.8)'
+                    : 'rgba(255, 255, 255, 0.95)',
                 backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(108, 92, 231, 0.2)',
+                border: `1px solid ${isDark ? 'rgba(108, 92, 231, 0.2)' : 'rgba(108, 92, 231, 0.1)'}`,
                 borderRadius: 3,
             }}
         >
@@ -70,7 +74,7 @@ function AddTask({ add }) {
                         mb: 2,
                         '& .MuiOutlinedInput-root': {
                             '& fieldset': {
-                                borderColor: 'rgba(108, 92, 231, 0.3)',
+                                borderColor: isDark ? 'rgba(108, 92, 231, 0.3)' : 'rgba(108, 92, 231, 0.2)',
                             },
                             '&:hover fieldset': {
                                 borderColor: '#6c5ce7',
@@ -80,7 +84,7 @@ function AddTask({ add }) {
                             },
                         },
                         '& .MuiInputLabel-root': {
-                            color: '#b2b2d0',
+                            color: isDark ? '#b2b2d0' : '#666',
                         },
                     }}
                 />
@@ -94,7 +98,7 @@ function AddTask({ add }) {
                         mb: 3,
                         '& .MuiOutlinedInput-root': {
                             '& fieldset': {
-                                borderColor: 'rgba(108, 92, 231, 0.3)',
+                                borderColor: isDark ? 'rgba(108, 92, 231, 0.3)' : 'rgba(108, 92, 231, 0.2)',
                             },
                             '&:hover fieldset': {
                                 borderColor: '#6c5ce7',
@@ -104,7 +108,7 @@ function AddTask({ add }) {
                             },
                         },
                         '& .MuiInputLabel-root': {
-                            color: '#b2b2d0',
+                            color: isDark ? '#b2b2d0' : '#666',
                         },
                     }}
                 />
@@ -112,7 +116,6 @@ function AddTask({ add }) {
                     type="submit"
                     variant="contained"
                     fullWidth
-                    endIcon={<Send />}
                     sx={{
                         py: 1.5,
                         background: 'linear-gradient(135deg, #6c5ce7 0%, #4a3cb5 100%)',

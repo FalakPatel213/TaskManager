@@ -6,7 +6,6 @@
 
 body {
   font-family: 'Segoe UI', 'Roboto', 'Helvetica', sans-serif;
-  background: #0a0a0a;
   min-height: 100vh;
 }
 
@@ -25,7 +24,7 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: #f0f0f0;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -50,4 +49,10 @@ html {
 
 .MuiPaper-root {
   animation: fadeInUp 0.4s ease-out;
+}
+
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-track {
+    background: #1a1a1a;
+  }
 }

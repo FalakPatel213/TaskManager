@@ -6,9 +6,11 @@ import {
     TextField,
     Button,
 } from '@mui/material';
-import { Edit, Update } from '@mui/icons-material';
+import { Edit } from '@mui/icons-material';
+import { useTheme } from './ThemeContext';
 
 function EditTask({ edit, esno, etitle, edesc }) {
+    const { isDark } = useTheme();
     const [sno, setSno] = useState(esno);
     const [title, setTitle] = useState(etitle);
     const [desc, setDesc] = useState(edesc);
@@ -23,13 +25,15 @@ function EditTask({ edit, esno, etitle, edesc }) {
 
     return (
         <Paper
-            elevation={0}
+            elevation={isDark ? 0 : 2}
             sx={{
                 p: 4,
                 mb: 4,
-                background: 'rgba(20, 20, 35, 0.8)',
+                background: isDark 
+                    ? 'rgba(20, 20, 35, 0.8)'
+                    : 'rgba(255, 255, 255, 0.95)',
                 backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 107, 107, 0.2)',
+                border: `1px solid ${isDark ? 'rgba(255, 107, 107, 0.2)' : 'rgba(255, 107, 107, 0.1)'}`,
                 borderRadius: 3,
             }}
         >
@@ -58,7 +62,7 @@ function EditTask({ edit, esno, etitle, edesc }) {
                         mb: 2,
                         '& .MuiOutlinedInput-root': {
                             '& fieldset': {
-                                borderColor: 'rgba(255, 107, 107, 0.3)',
+                                borderColor: isDark ? 'rgba(255, 107, 107, 0.3)' : 'rgba(255, 107, 107, 0.2)',
                             },
                             '&:hover fieldset': {
                                 borderColor: '#ff6b6b',
@@ -68,7 +72,7 @@ function EditTask({ edit, esno, etitle, edesc }) {
                             },
                         },
                         '& .MuiInputLabel-root': {
-                            color: '#b2b2d0',
+                            color: isDark ? '#b2b2d0' : '#666',
                         },
                     }}
                 />
@@ -82,7 +86,7 @@ function EditTask({ edit, esno, etitle, edesc }) {
                         mb: 3,
                         '& .MuiOutlinedInput-root': {
                             '& fieldset': {
-                                borderColor: 'rgba(255, 107, 107, 0.3)',
+                                borderColor: isDark ? 'rgba(255, 107, 107, 0.3)' : 'rgba(255, 107, 107, 0.2)',
                             },
                             '&:hover fieldset': {
                                 borderColor: '#ff6b6b',
@@ -92,7 +96,7 @@ function EditTask({ edit, esno, etitle, edesc }) {
                             },
                         },
                         '& .MuiInputLabel-root': {
-                            color: '#b2b2d0',
+                            color: isDark ? '#b2b2d0' : '#666',
                         },
                     }}
                 />
@@ -100,7 +104,6 @@ function EditTask({ edit, esno, etitle, edesc }) {
                     type="submit"
                     variant="contained"
                     fullWidth
-                    endIcon={<Update />}
                     sx={{
                         py: 1.5,
                         background: 'linear-gradient(135deg, #ff6b6b 0%, #cc5555 100%)',
@@ -119,4 +122,4 @@ function EditTask({ edit, esno, etitle, edesc }) {
     );
 }
 
-export default EditTask;
+export default EditTask;    

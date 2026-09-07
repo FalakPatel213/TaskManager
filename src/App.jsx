@@ -5,71 +5,29 @@ import TaskList from './Components/TaskList';
 import AddTask from './Components/AddTask';
 import About from './Components/About';
 import EditTask from './Components/EditTask';
+import Login from './Components/Login';
+import Signup from './Components/Signup';
 import { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  Navigate
 } from 'react-router-dom';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider, CssBaseline } from '@mui/material';
 import { Container, Box } from '@mui/material';
+import { ThemeProvider as CustomThemeProvider, useTheme } from './Components/ThemeContext';
 
-// Create a minimal dark theme
-const theme = createTheme({
-  palette: {
-    mode: 'dark',
-    primary: {
-      main: '#6c5ce7',
-      light: '#a29bfe',
-      dark: '#4a3cb5',
-    },
-    secondary: {
-      main: '#ff6b6b',
-      light: '#ff8787',
-      dark: '#cc5555',
-    },
-    background: {
-      default: '#0a0a0a',
-      paper: '#1a1a2e',
-    },
-    text: {
-      primary: '#e0e0e0',
-      secondary: '#b2b2d0',
-    },
-  },
-  typography: {
-    fontFamily: '"Segoe UI", "Roboto", "Helvetica", sans-serif',
-    h4: {
-      fontWeight: 600,
-    },
-    h5: {
-      fontWeight: 500,
-    },
-  },
-  shape: {
-    borderRadius: 12,
-  },
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          textTransform: 'none',
-          fontWeight: 500,
-        },
-      },
-    },
-    MuiPaper: {
-      styleOverrides: {
-        root: {
-          backgroundImage: 'none',
-        },
-      },
-    },
-  },
-});
+const ProtectedRoute = ({ children }) => {
+  const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+  if (!currentUser) {
+    return <Navigate to="/login" replace />;
+  }
+  return children;
+};
 
-function App() {
+function AppContent() {
+  const { theme } = useTheme();
   let init;
 
   if (localStorage.getItem("tasks") == null) {
@@ -159,26 +117,46 @@ function App() {
       <CssBaseline />
       <Router>
         <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-          <Header head="Task Management Application" />
-          <Container maxWidth="md" sx={{ flex: 1, py: 4 }}>
-            <Routes>
-              <Route exact path="/" element={
+          <Routes>
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/signup" element={<Signup />} />
+            
+            <Route path="/*" element={
+              <ProtectedRoute>
                 <>
-                  {edit ? 
-                    <EditTask edit={editTaskForm} esno={sno} etitle={title} edesc={desc} /> :
-                    <AddTask add={addTask} />
-                  }
-                  <TaskList tasks={tasks} delTask={deleteTask} edtTask={editTask} />
+                  <Header head="Todo List Application" />
+                  <Container maxWidth="md" sx={{ flex: 1, py: 4 }}>
+                    <Routes>
+                      <Route exact path="/tasks" element={
+                        <>
+                          {edit ? 
+                            <EditTask edit={editTaskForm} esno={sno} etitle={title} edesc={desc} /> :
+                            <AddTask add={addTask} />
+                          }
+                          <TaskList tasks={tasks} delTask={deleteTask} edtTask={editTask} />
+                        </>
+                      } />
+                      <Route exact path="/about" element={<About />} />
+                      <Route exact path="/" element={<Navigate to="/tasks" replace />} />
+                    </Routes>
+                  </Container>
+                  <Footer />
                 </>
-              } />
-              <Route exact path="/about" element={<About />} />
-            </Routes>
-          </Container>
-          <Footer />
+              </ProtectedRoute>
+            } />
+          </Routes>
         </Box>
       </Router>
     </ThemeProvider>
-  )
+  );
+}
+
+function App() {
+  return (
+    <CustomThemeProvider>
+      <AppContent />
+    </CustomThemeProvider>
+  );
 }
 
 export default App;
