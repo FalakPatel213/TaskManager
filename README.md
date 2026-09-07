@@ -1,4 +1,4 @@
-# 📝 Task Management Application
+# 📝 ToDo List Application
 
 A modern, responsive Task Management application built with **React.js** and **Material-UI (MUI)**. The application allows users to create, edit, and delete tasks while providing user authentication, persistent local storage, responsive UI, and light/dark theme support.
 
