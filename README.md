@@ -1,6 +1,6 @@
 # 📝 ToDo List Application
 
-A modern, responsive Task Management application built with **React.js** and **Material-UI (MUI)**. The application allows users to create, edit, and delete tasks while providing user authentication, persistent local storage, responsive UI, and light/dark theme support.
+A modern, responsive ToDo List application built with **React.js** and **Material-UI (MUI)**. The application allows users to create, edit, and delete tasks while providing user authentication, persistent local storage, responsive UI, and light/dark theme support.
 
 ---
 
@@ -56,8 +56,8 @@ A modern, responsive Task Management application built with **React.js** and **M
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/FalakPatel213/TaskManagement.git
-cd TaskManagement
+git clone https://github.com/FalakPatel213/ToDo-List-Application
+cd ToDo-List-Application
 ```
 
 ### 2. Install dependencies
@@ -622,7 +622,7 @@ App
 The application heading can be changed through the `Header` component:
 
 ```jsx
-<Header head="Task Management Application" />
+<Header head="ToDo List Application" />
 ```
 
 ---
