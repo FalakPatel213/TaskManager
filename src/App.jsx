@@ -124,7 +124,7 @@ function AppContent() {
             <Route path="/*" element={
               <ProtectedRoute>
                 <>
-                  <Header head="Todo List Application" />
+                  <Header head="ToDo List Application" />
                   <Container maxWidth="md" sx={{ flex: 1, py: 4 }}>
                     <Routes>
                       <Route exact path="/tasks" element={
